@@ -1,0 +1,12 @@
+.profile-img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+label{
+    color: black;
+}
+.usercards{
+    max-width: 900px;
+    width: 100%;
+}
