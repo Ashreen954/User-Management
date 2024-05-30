@@ -71,22 +71,19 @@ function Users() {
   let navigate=useNavigate() //Programmatical Navigation to removed users
 
   let deletebtn=(userObj)=>{
-    axios.post("http://localhost:4000/removed-users",userObj)
-    .then(response=>
-      {
-        if(response.status===201){
-          axios.delete(`http://localhost:4000/users/${userObj.id}`)
-        .then(response=>{
-      if(response.status === 200) {        
-        navigate('/removed-users')      
-      }}
-    )
-    .catch(err=>console.log(err))
+    axios.delete(`http://localhost:4000/users/${userObj.id}`)
+    .then(response=>{
+      if(response.status === 200)
+        {
+          axios.post("http://localhost:4000/removed-users",userObj)
+          .then(response=>{
+            if(response.status === 201) {        
+              navigate('/removed-users')      
+            }})
+            .catch(err=>console.log(err))
         }
-      }
-    )
-    
-  }
+      })
+    }
 
   let [users,setUsers]=useState([])
   // console.log(users)
